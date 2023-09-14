@@ -1,18 +1,16 @@
-// script.js
-document.addEventListener('DOMContentLoaded', function () {
-    // Get references to the select element and the button
-    var colorSelect = document.getElementById('colorSelect');
-    var removeButton = document.getElementById('removeButton');
+document.addEventListener("DOMContentLoaded", function () {
+    // Get references to the dropdown and button elements
+    const colorSelect = document.getElementById("colorSelect");
+    const removeButton = document.getElementById("removeButton");
 
     // Add a click event listener to the button
-    removeButton.addEventListener('click', function () {
-        // Get the selected option
-        var selectedOption = colorSelect.options[colorSelect.selectedIndex];
+    removeButton.addEventListener("click", function () {
+        // Get an array of selected options
+        const selectedOptions = Array.from(colorSelect.selectedOptions);
 
-        // Check if an option is selected
-        if (selectedOption) {
-            // Remove the selected option from the select element
+        // Loop through the selected options and remove them from the dropdown
+        selectedOptions.forEach(function (selectedOption) {
             colorSelect.removeChild(selectedOption);
-        }
+        });
     });
 });
