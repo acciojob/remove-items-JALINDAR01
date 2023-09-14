@@ -1,17 +1,13 @@
-document.addEventListener("DOMContentLoaded", function () {
-    // Get references to the dropdown and button elements
-    const colorSelect = document.getElementById("colorSelect");
-    const removeButton = document.getElementById("removeButton");
-
-    // Add a click event listener to the button
-    removeButton.addEventListener("click", function () {
-        // Get the selected option
-        const selectedOption = colorSelect.options[colorSelect.selectedIndex];
-
-        // Check if an option is selected
-        if (selectedOption) {
-            // Remove the selected option from the dropdown
-            colorSelect.removeChild(selectedOption);
-        }
-    });
-});
+//your JS code here. If required.
+let select = document.getElementById("colorSelect");
+let btn =  document.querySelector("input[type=button]")
+btn.addEventListener("click", ()=>{       
+	//select.children--> will give all the child elements of select element
+    for (const child of select.children) {
+		//select.value--> will give value of the selected element
+        if(child.value === select.value){
+			//child.remove()-->remove the child element
+                child.remove();
+         }
+    }
+})
