@@ -1,16 +1,25 @@
-document.addEventListener("DOMContentLoaded", function () {
-    // Get references to the dropdown and button elements
-    const colorSelect = document.getElementById("colorSelect");
-    const removeButton = document.getElementById("removeButton");
+// Assuming this is your HTML structure:
+// <select id="colorSelect">
+//     <option value="Red">Red</option>
+//     <option value="Green">Green</option>
+//     <option value="Blue">Blue</option>
+//     <option value="Yellow">Yellow</option>
+// </select>
 
-    // Add a click event listener to the button
-    removeButton.addEventListener("click", function () {
-        // Get an array of selected options
-        const selectedOptions = Array.from(colorSelect.selectedOptions);
+describe('Dropdown Test', () => {
+  beforeEach(() => {
+    // Visit your page or application URL
+    cy.visit('your_application_url');
+  });
 
-        // Loop through the selected options and remove them from the dropdown
-        selectedOptions.forEach(function (selectedOption) {
-            colorSelect.removeChild(selectedOption);
-        });
-    });
+  it('Should select an option from the dropdown', () => {
+    // Ensure that the dropdown has loaded and is visible
+    cy.get('#colorSelect').should('be.visible');
+
+    // Select the desired option by its text (e.g., "Red")
+    cy.get('#colorSelect').select('Red');
+
+    // You can also assert that the selected value matches the expected value
+    cy.get('#colorSelect').should('have.value', 'Red');
+  });
 });
